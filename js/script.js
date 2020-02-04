@@ -4,6 +4,8 @@ document.addEventListener(
 	'DOMContentLoaded',
 	function() {
 		//START - Wrapper for DOM ready
+
+		// Sections from NY Time
 		const sectionList = [
 			'arts',
 			'automobiles',
@@ -46,7 +48,8 @@ document.addEventListener(
 
 		// Add event listener
 		sectionSelector.addEventListener('change', event => {
-			console.log(event);
+			cleanCard();
+			getStories(event.target.value);
 		});
 
 		// To Upper Case
@@ -91,8 +94,9 @@ document.addEventListener(
 			parentElement.appendChild(div);
 		}
 
-		getStories('movies');
-
+		function cleanCard() {
+			cardSection.innerHTML = '';
+		}
 		// END - Wrapper for DOM ready
 	},
 	false

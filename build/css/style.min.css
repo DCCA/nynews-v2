@@ -154,6 +154,9 @@ table {
   font-weight: 300;
   font-style: italic; }
 
+* {
+  box-sizing: border-box; }
+
 html {
   font-size: 16px;
   color: #ffffff;
@@ -162,12 +165,14 @@ html {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
   grid-auto-rows: minmax(100px, auto); }
 
 .abstract {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 0.4rem; }
 
 .card {
   display: flex;

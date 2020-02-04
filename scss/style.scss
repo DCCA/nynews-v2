@@ -7,8 +7,29 @@ $font-size: 16px;
 $font-color: #ffffff;
 $font-family: 'Open Sans';
 $background-color: black;
+$desktop-width: 1024px;
+$tablet-width: 768px;
+$card-min-size: 384px;
+
+// Mixin
+// Basic functions
+@mixin desktop {
+	@media (min-width: $desktop-width) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: $tablet-width) {
+		@content;
+	}
+}
 
 // General
+* {
+	box-sizing: border-box;
+}
+
 html {
 	font-size: $font-size;
 	color: $font-color;
@@ -19,7 +40,7 @@ html {
 // Grid
 .wrapper {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax($card-min-size, 1fr));
 	grid-auto-rows: minmax(100px, auto);
 }
 
@@ -27,6 +48,8 @@ html {
 .abstract {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	padding: 0.4rem;
 }
 
 .card {
