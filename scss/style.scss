@@ -1,3 +1,17 @@
-body {
-	background-color: red;
+// Import files
+@import './css-reset.scss';
+@import './font.scss';
+
+// Variables
+$font-size: 16px;
+$font-color: #ffffff;
+$font-family: 'Open Sans';
+$background-color: black;
+
+// General
+html {
+	font-size: $font-size;
+	color: $font-color;
+	font-family: $font-family;
+	background-color: $background-color;
 }

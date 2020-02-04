@@ -17,7 +17,7 @@ gulp.task('script', function() {
 
 gulp.task('scss', function() {
 	return gulp
-		.src('./scss/*.scss') // What files do we want gulp to consume?
+		.src('./scss/style.scss') // What files do we want gulp to consume?
 		.pipe(sass()) // Call the scss function on these files
 		.pipe(rename({ extname: '.min.css' })) // Rename the scss file
 		.pipe(gulp.dest('./build/css')); // Where do we put the result?
