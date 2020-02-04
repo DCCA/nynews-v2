@@ -11,6 +11,7 @@ ehthumbs.db
 # Files
 config.js
 config.min.js
+specs/
 
 # Editor
 .vscode
