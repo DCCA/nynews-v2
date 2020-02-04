@@ -20,13 +20,13 @@ html {
 .wrapper {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	grid-gap: 10px;
 	grid-auto-rows: minmax(100px, auto);
 }
 
 // Card
 .abstract {
 	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .card {

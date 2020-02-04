@@ -34,14 +34,19 @@ document.addEventListener(
 		];
 
 		// Get elements in the HTML
-		const sectionSelector = document.getElementById('section');
+		const sectionSelector = document.getElementById('section-selector');
 		const cardSection = document.querySelector('.card-section');
 
-		sectionList.forEach(e => {
+		sectionList.forEach(element => {
 			const optionElement = document.createElement('option');
-			optionElement.innerText = uppercaseFirstLetter(e);
-			optionElement.value = e;
+			optionElement.innerText = uppercaseFirstLetter(element);
+			optionElement.value = element;
 			sectionSelector.appendChild(optionElement);
+		});
+
+		// Add event listener
+		sectionSelector.addEventListener('change', event => {
+			console.log(event);
 		});
 
 		// To Upper Case
@@ -56,8 +61,15 @@ document.addEventListener(
 			)
 				.then(res => res.json())
 				.then(data => {
-					console.log(data.section);
-					console.log(data.results);
+					data = data.results;
+					console.log(data[0]);
+					data.forEach(element => {
+						createCard(
+							cardSection,
+							element.multimedia[2].url,
+							element.abstract
+						);
+					});
 				})
 				.catch(err => {
 					console.log(err);
@@ -72,15 +84,14 @@ document.addEventListener(
 			div.style.backgroundImage = `url(${imgUrl})`;
 			// Create abstract
 			const p = document.createElement('p');
-			p.setAttribute('class', abstract);
+			p.setAttribute('class', 'abstract');
 			p.innerText = abstract;
 			// Append elements
 			div.appendChild(p);
 			parentElement.appendChild(div);
 		}
 
-		getStories('arts');
-		createCard(cardSection, 'https://picsum.photos/640/360', 'Teste');
+		getStories('movies');
 
 		// END - Wrapper for DOM ready
 	},
