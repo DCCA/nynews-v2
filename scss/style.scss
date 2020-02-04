@@ -15,3 +15,23 @@ html {
 	font-family: $font-family;
 	background-color: $background-color;
 }
+
+// Grid
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 10px;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+// Card
+.abstract {
+	width: 100%;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+}
