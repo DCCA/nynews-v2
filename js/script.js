@@ -69,7 +69,7 @@ document.addEventListener(
 					data.forEach(element => {
 						createCard(
 							cardSection,
-							element.multimedia[2].url,
+							element.multimedia[0].url,
 							element.abstract
 						);
 					});
@@ -85,6 +85,8 @@ document.addEventListener(
 			const div = document.createElement('div');
 			div.setAttribute('class', 'card');
 			div.style.backgroundImage = `url(${imgUrl})`;
+			div.style.backgroundPosition = 'center';
+			div.style.backgroundSize = 'cover';
 			// Create abstract
 			const p = document.createElement('p');
 			p.setAttribute('class', 'abstract');

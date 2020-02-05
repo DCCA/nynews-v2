@@ -8,18 +8,18 @@
 		<link rel="stylesheet" href="./build/css/style.min.css" />
 	</head>
 	<body>
-		<header>
-			<img src="./assets/images/nyt-logo.svg" alt="logo" />
+		<header class="flex-center-column">
+			<img id="logo" src="./assets/images/nyt-logo.svg" alt="logo" />
 			<h2>Choose a section:</h2>
-			<select name="section-select" id="section-selector"> </select>
+			<select
+				name="section-select"
+				id="section-selector"
+				aria-placeholder="Select"
+			></select>
 		</header>
-		<section class="card-section wrapper">
-			<div class="card">
-				<p class="abstract">Text Go Here</p>
-			</div>
-		</section>
+		<section class="card-section wrapper"></section>
 		<footer>
-			<p>&copy; Copyright 2016 Instanews</p>
+			<p class="center">&copy; Copyright 2016 Instanews</p>
 		</footer>
 		<script src="./build/js/script.min.js" type="module"></script>
 	</body>
