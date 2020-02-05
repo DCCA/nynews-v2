@@ -43,6 +43,9 @@ html {
 	justify-content: center;
 	flex-direction: column;
 	flex: 1;
+	transition-property: height;
+	transition-duration: 2s;
+	transition-timing-function: linear;
 }
 
 .main {
@@ -64,13 +67,19 @@ html {
 .wrapper {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax($card-min-size, 1fr));
-	grid-auto-rows: minmax(30vh, 100%);
+	grid-auto-rows: minmax(50vh, 100%);
 }
 
 // Header
-#logo {
+.logo {
 	max-width: 40vw;
 }
+
+// .logo-with-content {
+// 	transition-duration: 2s;
+// 	transition-timing-function: linear;
+// 	max-width: 10vw;
+// }
 
 // Select
 .logo-select-box-section {
