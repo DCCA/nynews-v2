@@ -98,16 +98,25 @@ select {
 	width: 100vw;
 }
 
-.abstract {
+.card-link {
+	height: 100%;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	text-align: center;
-	padding: 0.4rem;
+	position: absolute;
 }
 
 .card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-end;
+	p {
+		font-size: 1.2rem;
+	}
+	.abstract {
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		text-align: center;
+		padding: 0.4rem;
+	}
 }

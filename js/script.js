@@ -7,6 +7,7 @@ document.addEventListener(
 
 		// Sections from NY Time
 		const sectionList = [
+			'select',
 			'arts',
 			'automobiles',
 			'books',
@@ -65,14 +66,24 @@ document.addEventListener(
 				.then(res => res.json())
 				.then(data => {
 					data = data.results;
-					console.log(data[0]);
-					data.forEach(element => {
+					console.log(data);
+					// Filter articles without multimedia
+					data.forEach(e => {
+						if (e.multimedia === null) {
+							console.log(e);
+							data.splice(data.indexOf(e), 1);
+						}
+					});
+					console.log(data);
+					// Run the loop to create the card
+					for (let i = 0; i < 12; i++) {
 						createCard(
 							cardSection,
-							element.multimedia[0].url,
-							element.abstract
+							data[i].multimedia[0].url,
+							data[i].abstract,
+							data[i].url
 						);
-					});
+					}
 				})
 				.catch(err => {
 					console.log(err);
@@ -80,24 +91,34 @@ document.addEventListener(
 		}
 
 		// Create card
-		function createCard(parentElement, imgUrl, abstract) {
+		function createCard(parentElement, imgUrl, abstract, articleUrl) {
 			// Create div
-			const div = document.createElement('div');
+			const div = createElement('div');
 			div.setAttribute('class', 'card');
 			div.style.backgroundImage = `url(${imgUrl})`;
 			div.style.backgroundPosition = 'center';
 			div.style.backgroundSize = 'cover';
+			// Create a element
+			const a = createElement('a');
+			a.setAttribute('href', articleUrl);
+			a.setAttribute('class', 'card-link');
+			a.setAttribute('target', '_blank');
 			// Create abstract
-			const p = document.createElement('p');
+			const p = createElement('p');
 			p.setAttribute('class', 'abstract');
 			p.innerText = abstract;
 			// Append elements
 			div.appendChild(p);
+			div.appendChild(a);
 			parentElement.appendChild(div);
 		}
-
+		// Clean the card section to include new cards
 		function cleanCard() {
 			cardSection.innerHTML = '';
+		}
+		// Function to create a new element
+		function createElement(e) {
+			return document.createElement(e);
 		}
 		// END - Wrapper for DOM ready
 	},
