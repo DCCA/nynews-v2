@@ -39,8 +39,7 @@ document.addEventListener(
 		// Get elements in the HTML
 		const sectionSelector = document.getElementById('section-selector');
 		const cardSection = document.querySelector('.card-section');
-		const logo = document.querySelector('.logo');
-		const logoSelectSection = document.querySelector(
+		const logoSelectBoxSection = document.querySelector(
 			'.logo-select-box-section'
 		);
 
@@ -88,8 +87,6 @@ document.addEventListener(
 							data[i].url
 						);
 					}
-					// logo.classList.remove('logo');
-					// logo.setAttribute('class', 'logo-with-content');
 				})
 				.catch(err => {
 					console.log(err);
