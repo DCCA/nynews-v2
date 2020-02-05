@@ -188,7 +188,7 @@ html {
   grid-auto-rows: minmax(30vh, auto); }
 
 #logo {
-  height: 8rem; }
+  max-width: 40vw; }
 
 @media (min-width: 768px) {
   .logo-select-box-section {
