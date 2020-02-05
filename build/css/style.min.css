@@ -167,10 +167,20 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; }
+  flex-direction: column;
+  flex: 1; }
+
+.main {
+  min-height: 100vh; }
 
 .center {
   text-align: center; }
+
+.container {
+  padding: 2rem; }
+
+.pad-1 {
+  padding: 1rem; }
 
 .wrapper {
   display: grid;
@@ -180,8 +190,22 @@ html {
 #logo {
   height: 8rem; }
 
+@media (min-width: 768px) {
+  .logo-select-box-section {
+    flex-direction: row; } }
+
+@media (min-width: 1024px) {
+  .logo-select-box-section {
+    align-self: flex-start; } }
+
+.select-box {
+  display: flex;
+  flex-direction: column; }
+
 select {
-  background: url(../../assets/images/arrow.svg) 96%/15% no-repeat #eee; }
+  background: url(../../assets/images/arrow.svg) 96%/15% no-repeat #eee;
+  -webkit-appearance: none;
+  padding: 0.2rem 0.2rem 0.2rem 0.3rem; }
 
 .abstract {
   width: 100%;

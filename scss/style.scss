@@ -42,12 +42,24 @@ html {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	flex: 1;
+}
+
+.main {
+	min-height: 100vh;
 }
 
 .center {
 	text-align: center;
 }
 
+.container {
+	padding: 2rem;
+}
+
+.pad-1 {
+	padding: 1rem;
+}
 // Grid
 .wrapper {
 	display: grid;
@@ -61,8 +73,24 @@ html {
 }
 
 // Select
+.logo-select-box-section {
+	@include tablet {
+		flex-direction: row;
+	}
+	@include desktop {
+		align-self: flex-start;
+	}
+}
+
+.select-box {
+	display: flex;
+	flex-direction: column;
+}
+
 select {
 	background: url(../../assets/images/arrow.svg) 96% / 15% no-repeat #eee;
+	-webkit-appearance: none;
+	padding: 0.2rem 0.2rem 0.2rem 0.3rem;
 }
 
 // Card

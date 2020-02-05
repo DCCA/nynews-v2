@@ -8,19 +8,23 @@
 		<link rel="stylesheet" href="./build/css/style.min.css" />
 	</head>
 	<body>
-		<header class="flex-center-column">
-			<img id="logo" src="./assets/images/nyt-logo.svg" alt="logo" />
-			<h2>Choose a section:</h2>
-			<select
-				name="section-select"
-				id="section-selector"
-				aria-placeholder="Select"
-			></select>
-		</header>
-		<section class="card-section wrapper"></section>
-		<footer>
-			<p class="center">&copy; Copyright 2016 Instanews</p>
-		</footer>
+		<div class="flex-center-column main">
+			<header class="logo-select-box-section flex-center-column container">
+				<img id="logo" src="./assets/images/nyt-logo.svg" alt="logo" />
+				<div class="select-box">
+					<h2 class="pad-1">Choose a section:</h2>
+					<select
+						name="section-select"
+						id="section-selector"
+						aria-placeholder="Select"
+					></select>
+				</div>
+			</header>
+			<section class="card-section wrapper"></section>
+			<footer class="container">
+				<p class="center">&copy; Copyright 2020 Instanews</p>
+			</footer>
+		</div>
 		<script src="./build/js/script.min.js" type="module"></script>
 	</body>
 </html>
