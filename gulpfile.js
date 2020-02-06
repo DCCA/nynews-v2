@@ -3,7 +3,9 @@ const gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	browserSync = require('browser-sync').create(),
 	sass = require('gulp-sass'),
-	eslint = require('gulp-eslint');
+	eslint = require('gulp-eslint'),
+	cssnano = require('gulp-cssnano'),
+	autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('script', function() {
 	return gulp
@@ -19,6 +21,8 @@ gulp.task('scss', function() {
 	return gulp
 		.src('./scss/style.scss') // What files do we want gulp to consume?
 		.pipe(sass()) // Call the scss function on these files
+		.pipe(autoprefixer())
+		.pipe(cssnano())
 		.pipe(rename({ extname: '.min.css' })) // Rename the scss file
 		.pipe(gulp.dest('./build/css')); // Where do we put the result?
 });

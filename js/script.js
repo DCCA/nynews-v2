@@ -39,9 +39,7 @@ document.addEventListener(
 		// Get elements in the HTML
 		const sectionSelector = document.getElementById('section-selector');
 		const cardSection = document.querySelector('.card-section');
-		const logoSelectBoxSection = document.querySelector(
-			'.logo-select-box-section'
-		);
+		const logo = document.querySelector('.logo');
 
 		sectionList.forEach(element => {
 			const optionElement = document.createElement('option');
@@ -87,6 +85,8 @@ document.addEventListener(
 							data[i].url
 						);
 					}
+					logo.classList.add('logo-with-content');
+					logo.classList.remove('logo');
 				})
 				.catch(err => {
 					console.log(err);
@@ -118,6 +118,8 @@ document.addEventListener(
 		// Clean the card section to include new cards
 		function cleanCard() {
 			cardSection.innerHTML = '';
+			logo.classList.remove('logo-with-content');
+			logo.classList.add('logo');
 		}
 		// Function to create a new element
 		function createElement(e) {
