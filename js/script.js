@@ -43,7 +43,6 @@ document.addEventListener(
 		const loader = document.querySelector('.loader');
 		const errorMsg = document.querySelector('.error-message');
 		const logoSelectBoxSec = document.querySelector('.logo-select-box-section');
-		console.log(logoSelectBoxSec);
 		const thereIsContent = () => {
 			if(cardSection.innerHTML === ''){
 				return false;
@@ -138,11 +137,11 @@ document.addEventListener(
 			a.setAttribute('class', 'card-link');
 			a.setAttribute('target', '_blank');
 			// Create abstract
-			const p = createElement('p');
-			p.setAttribute('class', 'abstract');
-			p.innerText = abstract;
+			const h3 = createElement('h3');
+			h3.setAttribute('class', 'abstract');
+			h3.innerText = abstract;
 			// Append elements
-			div.appendChild(p);
+			div.appendChild(h3);
 			div.appendChild(a);
 			parentElement.appendChild(div);
 		}
