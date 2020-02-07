@@ -42,6 +42,8 @@ document.addEventListener(
 		const logo = document.querySelector('.logo');
 		const loader = document.querySelector('.loader');
 		const errorMsg = document.querySelector('.error-message');
+		const logoSelectBoxSec = document.querySelector('.logo-select-box-section');
+		console.log(logoSelectBoxSec);
 		const thereIsContent = () => {
 			if(cardSection.innerHTML === ''){
 				return false;
@@ -77,6 +79,8 @@ document.addEventListener(
 		function getStories(section) {
 			loader.classList.remove('none');
 			errorMsg.classList.add('none');
+			cardSection.classList.remove('flex-1');
+			logoSelectBoxSec.classList.remove('flex-1');
 			fetch(
 				`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}`
 				// Test wrong URL
@@ -106,6 +110,8 @@ document.addEventListener(
 					loader.classList.add('none');
 					if (thereIsContent) {
 						errorMsg.classList.remove('none');
+						cardSection.classList.add('flex-1');
+						logoSelectBoxSec.classList.add('flex-1');
 					}
 				});
 		}
