@@ -40,6 +40,7 @@ document.addEventListener(
 		const sectionSelector = document.getElementById('section-selector');
 		const cardSection = document.querySelector('.card-section');
 		const logo = document.querySelector('.logo');
+		const loader = document.querySelector('.loader');
 
 		sectionList.forEach(element => {
 			const optionElement = document.createElement('option');
@@ -61,6 +62,7 @@ document.addEventListener(
 
 		// API Call
 		function getStories(section) {
+			loader.classList.remove('none');
 			fetch(
 				`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}`
 			)
@@ -87,9 +89,11 @@ document.addEventListener(
 					}
 					logo.classList.add('logo-with-content');
 					logo.classList.remove('logo');
+					loader.classList.add('none');
 				})
 				.catch(err => {
 					console.log(err);
+					loader.classList.add('none');
 				});
 		}
 
