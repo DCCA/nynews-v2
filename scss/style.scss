@@ -42,7 +42,6 @@ html {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	// flex: 1;
 }
 
 .main {
@@ -111,9 +110,8 @@ html {
 select {
 	background: url(../../assets/images/arrow.svg) 96% / 15% no-repeat #eee;
 	-webkit-appearance: none;
-	background-position: center right;
 	padding: 0.2rem 0.2rem 0.2rem 0.3rem;
-	border-radius: 2px;
+	border-radius: 0.2rem;
 	font-size: inherit;
 	text-overflow: ellipsis;
 	white-space: nowrap;
