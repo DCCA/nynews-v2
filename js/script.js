@@ -44,7 +44,7 @@ document.addEventListener(
 		const errorMsg = document.querySelector('.error-message');
 		const logoSelectBoxSec = document.querySelector('.logo-select-box-section');
 		const thereIsContent = () => {
-			if(cardSection.innerHTML === ''){
+			if (cardSection.innerHTML === '') {
 				return false;
 			} else {
 				return true;
@@ -89,7 +89,7 @@ document.addEventListener(
 				.then(data => {
 					const jData = data.results;
 					filterResults(jData);
-					for (let i = 0; i < 12; i++) {
+					for (let i = 0; i < Math.min(12, jData.length); i++) {
 						createCard(
 							cardSection,
 							jData[i].multimedia[0].url,
@@ -98,16 +98,16 @@ document.addEventListener(
 						);
 					}
 				})
-				.then(()=> {
+				.then(() => {
 					logo.classList.add('logo-with-content');
 					logo.classList.remove('logo');
 					loader.classList.add('none');
-					}	
-				)
-				.catch(() => {
+				})
+				.catch(err => {
+					console.log(err);
 					// console.log(err);
 					loader.classList.add('none');
-					if (thereIsContent) {
+					if (!thereIsContent) {
 						errorMsg.classList.remove('none');
 						cardSection.classList.add('flex-1');
 						logoSelectBoxSec.classList.add('flex-1');
@@ -116,12 +116,13 @@ document.addEventListener(
 		}
 
 		// Filter results
-		function filterResults(data){
+		function filterResults(data) {
 			data.forEach(e => {
 				if (e.multimedia === null) {
 					data.splice(data.indexOf(e), 1);
 				}
-		})}
+			});
+		}
 
 		// Create card
 		function createCard(parentElement, imgUrl, abstract, articleUrl) {

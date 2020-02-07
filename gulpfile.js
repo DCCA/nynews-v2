@@ -5,6 +5,7 @@ const gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	eslint = require('gulp-eslint'),
 	cssnano = require('gulp-cssnano'),
+	sourcemaps = require('gulp-sourcemaps'),
 	autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('script', function() {
@@ -12,8 +13,10 @@ gulp.task('script', function() {
 		.src('./js/*.js') // What files do we want gulp to consume?
 		.pipe(eslint())
 		.pipe(eslint.format())
+		.pipe(sourcemaps.init())
 		.pipe(terser()) // Call the terser function on these files
-		.pipe(rename({ extname: '.min.js' })) // Rename the uglified file
+		.pipe(rename({ extname: '.min.js' }))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('./build/js')); // Where do we put the result?
 });
 

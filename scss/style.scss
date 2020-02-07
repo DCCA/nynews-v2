@@ -9,7 +9,6 @@ $font-family: 'Open Sans';
 $background-color: black;
 $desktop-width: 1024px; // 1024 / 16px
 $tablet-width: 768px; // 768 / 16px
-$card-min-size: 20rem; //320PX
 
 // Mixin
 // Basic functions
@@ -60,14 +59,23 @@ html {
 .pad-1 {
 	padding: 1rem 0;
 }
+
+.flex-1 {
+	flex: 1;
+}
+
+.none {
+	display: none;
+}
+
 // Grid
 .wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax($card-min-size, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
 	@include tablet {
-		grid-template-columns: repeat(auto-fit, minmax($card-min-size/3 * 2, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
 	}
-	@include desktop{
+	@include desktop {
 		grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
 	}
 }
@@ -89,8 +97,8 @@ html {
 
 // Select
 .logo-select-box-section {
-	h2{
-		@include tablet{
+	h2 {
+		@include tablet {
 			padding: 0 0 1rem;
 		}
 	}
@@ -119,11 +127,7 @@ select {
 
 // Card
 .card-section {
-	min-width: 100vw;
-}
-
-.flex-1{
-	flex: 1;
+	max-width: 100vw;
 }
 
 .card-section- .card-link {
@@ -139,7 +143,6 @@ select {
 	align-items: center;
 	justify-content: flex-end;
 	height: 20rem;
-	overflow: hidden;
 	&:hover > .abstract {
 		transition: 0.8s all linear;
 		opacity: 0;
@@ -170,10 +173,6 @@ select {
 	img {
 		height: 4rem;
 	}
-}
-
-.none {
-	display: none;
 }
 
 // Error message
