@@ -82,8 +82,6 @@ document.addEventListener(
 			logoSelectBoxSec.classList.remove('flex-1');
 			fetch(
 				`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}`
-				// Test wrong URL
-				// 'https;//api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}'
 			)
 				.then(res => res.json())
 				.then(data => {
@@ -104,10 +102,8 @@ document.addEventListener(
 					loader.classList.add('none');
 				})
 				.catch(err => {
-					console.log(err);
-					// console.log(err);
 					loader.classList.add('none');
-					if (!thereIsContent) {
+					if (thereIsContent) {
 						errorMsg.classList.remove('none');
 						cardSection.classList.add('flex-1');
 						logoSelectBoxSec.classList.add('flex-1');
