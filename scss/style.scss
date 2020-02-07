@@ -11,7 +11,7 @@ $desktop-width: 1024px; // 1024 / 16px
 $tablet-width: 768px; // 768 / 16px
 // Fix the minmax function
 // $card-min-size: 24rem;
-$card-min-size: 24rem;
+$card-min-size: 20rem;
 
 // Mixin
 // Basic functions
@@ -75,7 +75,7 @@ html {
 // Header
 .logo {
 	height: 16rem;
-	transition: all 0.6s ease-in-out;
+	transition: all 0.8s ease-in-out;
 }
 
 .logo-with-content {
@@ -84,7 +84,7 @@ html {
 		height: 4rem;
 		margin-right: 2.6rem;
 	}
-	transition: all 0.6s ease-in-out;
+	transition: all 0.8s ease-in-out;
 }
 
 // Select
@@ -105,7 +105,12 @@ html {
 select {
 	background: url(../../assets/images/arrow.svg) 96% / 15% no-repeat #eee;
 	-webkit-appearance: none;
+	background-position: center right;
 	padding: 0.2rem 0.2rem 0.2rem 0.3rem;
+	border-radius: 2px;
+	font-size: inherit;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 // Card
@@ -128,7 +133,7 @@ select {
 	height: 20rem;
 	overflow: hidden;
 	&:hover > .abstract {
-		transition: 0.6s all linear;
+		transition: 0.8s all linear;
 		opacity: 0;
 	}
 	.abstract {

@@ -42,9 +42,17 @@ document.addEventListener(
 		const logo = document.querySelector('.logo');
 		const loader = document.querySelector('.loader');
 		const errorMsg = document.querySelector('.error-message');
+		const thereIsContent = () => {
+			if(cardSection.innerHTML === ''){
+				return false;
+			} else {
+				return true;
+			}
+		};
 
 		start();
 
+		// Start
 		function start() {
 			// Set the select elements
 			sectionList.forEach(element => {
@@ -96,7 +104,7 @@ document.addEventListener(
 				.catch(() => {
 					// console.log(err);
 					loader.classList.add('none');
-					if (cardSection.innerHTML === '') {
+					if (thereIsContent) {
 						errorMsg.classList.remove('none');
 					}
 				});
