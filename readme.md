@@ -1,7 +1,7 @@
 # NY NEWS
 
 ### About
-This app request the top 12 stories from the NY Times api
+This app request the top 12 stories from the NY Times API. The user can choose what section they want to search, and the app will fetch it from the API and display in cards. The project is also responsive too.
 
 ### Tech
 Here is what I have used in this project:
