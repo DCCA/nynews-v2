@@ -41,19 +41,24 @@ document.addEventListener(
 		const cardSection = document.querySelector('.card-section');
 		const logo = document.querySelector('.logo');
 		const loader = document.querySelector('.loader');
+		const errorMsg = document.querySelector('.error-message');
 
-		sectionList.forEach(element => {
-			const optionElement = document.createElement('option');
-			optionElement.innerText = uppercaseFirstLetter(element);
-			optionElement.value = element;
-			sectionSelector.appendChild(optionElement);
-		});
+		start();
 
-		// Add event listener
-		sectionSelector.addEventListener('change', event => {
-			cleanCard();
-			getStories(event.target.value);
-		});
+		function start() {
+			// Set the select elements
+			sectionList.forEach(element => {
+				const optionElement = document.createElement('option');
+				optionElement.innerText = uppercaseFirstLetter(element);
+				optionElement.value = element;
+				sectionSelector.appendChild(optionElement);
+			});
+			// Add event listener
+			sectionSelector.addEventListener('change', event => {
+				cleanCard();
+				getStories(event.target.value);
+			});
+		}
 
 		// To Upper Case
 		function uppercaseFirstLetter(str) {
@@ -63,22 +68,16 @@ document.addEventListener(
 		// API Call
 		function getStories(section) {
 			loader.classList.remove('none');
+			errorMsg.classList.add('none');
 			fetch(
 				`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}`
+				// Test wrong URL
+				// 'https;//api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${API_KEY}'
 			)
 				.then(res => res.json())
 				.then(data => {
 					data = data.results;
-					console.log(data);
-					// Filter articles without multimedia
-					data.forEach(e => {
-						if (e.multimedia === null) {
-							console.log(e);
-							data.splice(data.indexOf(e), 1);
-						}
-					});
-					console.log(data);
-					// Run the loop to create the card
+					filterResults(data);
 					for (let i = 0; i < 12; i++) {
 						createCard(
 							cardSection,
@@ -94,8 +93,19 @@ document.addEventListener(
 				.catch(err => {
 					console.log(err);
 					loader.classList.add('none');
+					if (cardSection.innerHTML === '') {
+						errorMsg.classList.remove('none');
+					}
 				});
 		}
+
+		// Filter results
+		function filterResults(data){
+			data.forEach(e => {
+				if (e.multimedia === null) {
+					data.splice(data.indexOf(e), 1);
+				}
+		})};
 
 		// Create card
 		function createCard(parentElement, imgUrl, abstract, articleUrl) {
