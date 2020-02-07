@@ -11,7 +11,6 @@ $desktop-width: 1024px; // 1024 / 16px
 $tablet-width: 768px; // 768 / 16px
 
 // Mixin
-// Basic functions
 @mixin desktop {
 	@media (min-width: $desktop-width) {
 		@content;
@@ -20,6 +19,12 @@ $tablet-width: 768px; // 768 / 16px
 
 @mixin tablet {
 	@media (min-width: $tablet-width) {
+		@content;
+	}
+}
+// Check if user has mouse
+@mixin has-pointer {
+	@media (pointer: fine) {
 		@content;
 	}
 }
@@ -143,9 +148,14 @@ select {
 	align-items: center;
 	justify-content: flex-end;
 	height: 20rem;
-	&:hover > .abstract {
-		transition: 0.8s all linear;
-		opacity: 0;
+	@include has-pointer{
+		.abstract{
+			opacity: 0;
+		}
+		&:hover > .abstract {
+			transition: 0.8s all linear;
+			opacity: 1;
+		}
 	}
 	.abstract {
 		width: 100%;
