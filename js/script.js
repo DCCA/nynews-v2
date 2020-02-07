@@ -76,22 +76,25 @@ document.addEventListener(
 			)
 				.then(res => res.json())
 				.then(data => {
-					data = data.results;
-					filterResults(data);
+					const jData = data.results;
+					filterResults(jData);
 					for (let i = 0; i < 12; i++) {
 						createCard(
 							cardSection,
-							data[i].multimedia[0].url,
-							data[i].abstract,
-							data[i].url
+							jData[i].multimedia[0].url,
+							jData[i].abstract,
+							jData[i].url
 						);
 					}
+				})
+				.then(()=> {
 					logo.classList.add('logo-with-content');
 					logo.classList.remove('logo');
 					loader.classList.add('none');
-				})
-				.catch(err => {
-					console.log(err);
+					}	
+				)
+				.catch(() => {
+					// console.log(err);
 					loader.classList.add('none');
 					if (cardSection.innerHTML === '') {
 						errorMsg.classList.remove('none');
@@ -105,7 +108,7 @@ document.addEventListener(
 				if (e.multimedia === null) {
 					data.splice(data.indexOf(e), 1);
 				}
-		})};
+		})}
 
 		// Create card
 		function createCard(parentElement, imgUrl, abstract, articleUrl) {
